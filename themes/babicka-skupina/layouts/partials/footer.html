@@ -1,0 +1,41 @@
+<footer id="footer" class="container">
+    <div class="row">
+        <div class="col-sm">
+            <p>{{ $.Site.Params.subtitle }}, {{ $.Site.Title }}</p>
+            <ul class="nav">
+                <li class="nav-link"><a href="mailto:{{ $.Site.Params.contact.email}}"><span><i data-feather="mail"></i></a></li>
+                {{ if $.Site.Params.social }}
+                {{ $items := $.Site.Params.social }}
+                {{ $len := (len $items) }}
+                {{ if gt $len 0 }}
+                {{ range $k, $v := $items }}
+                {{ if $v}}
+                <li class="nav-link">
+                <a href="{{ $v }}" class="footer__social__link" alt="{{ $k }}" target="_blank" aria-label="{{ $v }}" rel="noopener">
+                    <span><i data-feather="{{ $k }}"></i></span>
+                </a></li>
+                {{ end }}
+                {{ end }}
+                {{ end }}
+                {{ end }}
+            </ul>
+        </div>
+        <div class="col-sm">
+            <ul class="nav">
+                <li class="nav-link">Česká speleologická společnost</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            {{ if $.Site.Params.copy.copy }}
+            <p>{{ $.Site.Params.copy.copy }}</p>
+            {{ else }}
+            <p>© {{ now.Format "2006" }} - {{ $.Site.Title }}</p>
+            {{ end }}
+        </div>
+    </div>
+</footer>
+<script>
+    feather.replace()
+</script>
